@@ -2,7 +2,7 @@
 
 A discovery and circulation system for the United International University Central Library — one catalogue for print books, e-books, journals and UIU theses, with live copy-level availability, one-step reserving, and recommendations drawn only from titles the library holds.
 
-Built from `UIU Smart Library Platform.pptx` (Team Ascent). The full feature breakdown is in [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
+A Team Ascent web project.
 
 ---
 
