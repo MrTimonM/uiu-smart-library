@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* ============================================================
+   UIU Smart Library — design tokens
+   Editorial/institutional: warm paper, deep ink, one strong accent.
+   ============================================================ */
+@theme {
+  --color-paper:      oklch(98.6% 0.006 85);
+  --color-paper-2:    oklch(96.6% 0.009 85);
+  --color-card:       oklch(100% 0 0);
+  --color-ink:        oklch(21% 0.022 265);
+  --color-ink-2:      oklch(44% 0.018 265);
+  --color-ink-3:      oklch(60% 0.014 265);
+  --color-line:       oklch(89% 0.008 265);
+  --color-line-2:     oklch(94% 0.006 265);
+
+  --color-brand:      oklch(43% 0.135 264);
+  --color-brand-2:    oklch(35% 0.125 264);
+  --color-brand-soft: oklch(95% 0.026 264);
+  --color-accent:     oklch(62% 0.165 42);
+  --color-accent-soft:oklch(95.5% 0.035 60);
+
+  --color-ok:         oklch(52% 0.115 158);
+  --color-ok-soft:    oklch(95% 0.04 158);
+  --color-warn:       oklch(63% 0.14 75);
+  --color-warn-soft:  oklch(96% 0.05 85);
+  --color-bad:        oklch(55% 0.185 27);
+  --color-bad-soft:   oklch(96% 0.035 27);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-serif), ui-serif, Georgia, serif;
+
+  --radius-card: 14px;
+}
+
+:root {
+  color-scheme: light;
+  --shadow-soft: 0 1px 2px oklch(20% 0.02 265 / 0.05), 0 8px 24px -14px oklch(20% 0.02 265 / 0.22);
+  --shadow-lift: 0 1px 2px oklch(20% 0.02 265 / 0.06), 0 18px 40px -20px oklch(20% 0.02 265 / 0.32);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-paper:      oklch(19% 0.013 265);
+    --color-paper-2:    oklch(23% 0.015 265);
+    --color-card:       oklch(23.5% 0.016 265);
+    --color-ink:        oklch(96% 0.006 85);
+    --color-ink-2:      oklch(76% 0.012 265);
+    --color-ink-3:      oklch(62% 0.014 265);
+    --color-line:       oklch(31% 0.015 265);
+    --color-line-2:     oklch(27% 0.014 265);
+    --color-brand:      oklch(74% 0.115 264);
+    --color-brand-2:    oklch(82% 0.09 264);
+    --color-brand-soft: oklch(29% 0.045 264);
+    --color-accent:     oklch(75% 0.135 55);
+    --color-accent-soft:oklch(30% 0.05 50);
+    --color-ok:         oklch(74% 0.12 158);
+    --color-ok-soft:    oklch(28% 0.045 158);
+    --color-warn:       oklch(80% 0.12 85);
+    --color-warn-soft:  oklch(30% 0.05 85);
+    --color-bad:        oklch(72% 0.14 27);
+    --color-bad-soft:   oklch(29% 0.06 27);
+    --shadow-soft: 0 1px 2px oklch(0% 0 0 / 0.3), 0 8px 24px -14px oklch(0% 0 0 / 0.6);
+    --shadow-lift: 0 1px 2px oklch(0% 0 0 / 0.35), 0 18px 40px -20px oklch(0% 0 0 / 0.7);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper:      oklch(19% 0.013 265);
+  --color-paper-2:    oklch(23% 0.015 265);
+  --color-card:       oklch(23.5% 0.016 265);
+  --color-ink:        oklch(96% 0.006 85);
+  --color-ink-2:      oklch(76% 0.012 265);
+  --color-ink-3:      oklch(62% 0.014 265);
+  --color-line:       oklch(31% 0.015 265);
+  --color-line-2:     oklch(27% 0.014 265);
+  --color-brand:      oklch(74% 0.115 264);
+  --color-brand-2:    oklch(82% 0.09 264);
+  --color-brand-soft: oklch(29% 0.045 264);
+  --color-accent:     oklch(75% 0.135 55);
+  --color-accent-soft:oklch(30% 0.05 50);
+  --color-ok:         oklch(74% 0.12 158);
+  --color-ok-soft:    oklch(28% 0.045 158);
+  --color-warn:       oklch(80% 0.12 85);
+  --color-warn-soft:  oklch(30% 0.05 85);
+  --color-bad:        oklch(72% 0.14 27);
+  --color-bad-soft:   oklch(29% 0.06 27);
+  --shadow-soft: 0 1px 2px oklch(0% 0 0 / 0.3), 0 8px 24px -14px oklch(0% 0 0 / 0.6);
+  --shadow-lift: 0 1px 2px oklch(0% 0 0 / 0.35), 0 18px 40px -20px oklch(0% 0 0 / 0.7);
+}
+
+* { border-color: var(--color-line); }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv05' 1, 'ss01' 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------------------------------------------------------- primitives */
+@layer components {
+  .label-eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-3;
+  }
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+  .card {
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition;
+    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand;
+  }
+  .btn-primary {
+    background: var(--color-brand);
+    color: white;
+  }
+  .btn-primary:hover { background: var(--color-brand-2); }
+  :root[data-theme="dark"] .btn-primary { color: oklch(19% 0.013 265); }
+  .btn-ghost {
+    border: 1px solid var(--color-line);
+    background: var(--color-card);
+    color: var(--color-ink);
+  }
+  .btn-ghost:hover { background: var(--color-paper-2); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+  .input {
+    @apply w-full rounded-lg px-3 py-2 text-sm outline-none transition;
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    color: var(--color-ink);
+  }
+  .input:focus { border-color: var(--color-brand); box-shadow: 0 0 0 3px var(--color-brand-soft); }
+  .link-underline {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklch, currentColor 30%, transparent);
+    text-underline-offset: 3px;
+  }
+  .link-underline:hover { text-decoration-color: currentColor; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn-primary { color: oklch(19% 0.013 265); }
+}
+
+/* hide number input spinners */
+input[type=number]::-webkit-inner-spin-button { appearance: none; }
+
+::selection { background: var(--color-brand-soft); color: var(--color-ink); }
+
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise .28s cubic-bezier(.22,.8,.3,1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
